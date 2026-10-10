@@ -1,14 +1,17 @@
 import pytest
 import requests
 from tests.pages.bing_page import BingPage
+
 BASE_URL = "https://jsonplaceholder.typicode.com"
 
-@pytest.fixture(scope="session")   # 改后：给 base_url 换正确的户口(scope="session")   # 改后：给 base_url 换正确的户口
+
+@pytest.fixture(scope="session")          # session 级：整个测试会话只提供一次根地址
 def base_url():
     return BASE_URL
 
-@pytest.fixture(scope="session")   # 改后：给 base_url 换正确的户口(scope="session")   # 改后：给 base_url 换正确的户口
-def created_post_id(base_url):          # fixture 也能依赖另一个 fixture（链式）
+
+@pytest.fixture(scope="session")
+def created_post_id(base_url):            # fixture 也能依赖另一个 fixture（链式）
     response = requests.post(
         f"{base_url}/posts",
         json={"title": "fixture 造的帖子", "body": "test", "userId": 1},
@@ -22,8 +25,5 @@ def created_post_id(base_url):          # fixture 也能依赖另一个 fixture�
 
 
 @pytest.fixture
-def bing_page(page):              # 夹具还是函数
-    return BingPage(page)         # 但退回来的是造好的图纸对象
-
-
-  #  pytest test_posts.py test_lifecycle_day04.py - -html = report.html - -self - contained - html --reruns 2
+def bing_page(page):                      # 夹具是函数，退回来的是造好的图纸对象
+    return BingPage(page)
