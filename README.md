@@ -1,5 +1,7 @@
 # 接口 + UI 双端自动化测试（pytest + Playwright）
 
+![接口测试](https://github.com/childish999/api-ui-autotest-portfolio/actions/workflows/api-tests.yml/badge.svg)
+
 基于 pytest 的自动化测试项目。接口端测试 [JSONPlaceholder](https://jsonplaceholder.typicode.com) 的公开接口，UI 端测试必应搜索，共 17 条用例。运行一次 pytest 会生成 HTML 报告；失败用例的截图、录像和 Trace 文件会自动保留。
 
 ## 技术栈
